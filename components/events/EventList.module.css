@@ -1,0 +1,12 @@
+.list {
+    padding: 0 2rem;
+    max-width: 60rem;
+    margin: 5rem auto;
+    display: grid;
+}
+
+@media (max-width: 55rem) {
+    .list {
+        padding: 0 1rem;
+    }
+}

@@ -1,0 +1,104 @@
+.event {
+    display: flex;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    margin-bottom: 2rem;
+}
+
+.event img {
+    object-fit: cover;
+    height: 16.7rem;
+}
+
+.content {
+    padding: 2rem;
+    width: 100%;
+    background-color: #fff;
+}
+
+.content h2 {
+    font-family: var(--type-second);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.date,
+.address {
+    display: flex;
+    align-items: flex-start;
+}
+
+.date time,
+.address address {
+    font-family: var(--type-first);
+    color: #666;
+}
+
+.date svg,
+.address svg {
+    display: inline-flex;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #666;
+    margin-right: .5rem;
+}
+
+.date {
+    margin-bottom: 1rem;
+}
+
+.date time {
+    font-weight: bold;
+}
+
+.address {
+    margin-bottom: 2rem;
+}
+
+.address address {
+    white-space: pre;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+.actions a {
+    display: block;
+}
+
+.actions a span {
+    vertical-align: middle;
+}
+
+.icon {
+    margin-left: .5rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+@media (max-width: 55rem) {
+    .event {
+        flex-direction: column;
+    }
+
+    .content {
+        padding: 2rem 1rem;
+    }
+
+    .content h2 {
+        margin-bottom: 1rem;
+    }
+
+    .address {
+        margin-bottom: 1rem;
+    }
+}
