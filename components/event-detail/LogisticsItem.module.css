@@ -2,6 +2,7 @@
     display: flex;
     align-items: flex-start;
     font-size: 1.5rem;
+    line-height: 1.2;
     color: #fff;
 }
   
@@ -25,7 +26,7 @@
     height: 2rem;
 }
 
-@media (max-width: 55rem) {
+@media (max-width: 60rem) {
     .item {
         font-size: 1.25rem;
     }

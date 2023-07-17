@@ -14,7 +14,7 @@
 .logistics img {
     object-fit: cover;
     width: 100%;
-    height: 16.7rem;
+    height: 12rem;
 }
 
 .list {
@@ -27,7 +27,7 @@
     white-space: pre;
 }
 
-@media (max-width: 55rem) {
+@media (max-width: 60rem) {
     .wrapper {
         padding: 0 1rem;
         margin: -3rem auto;

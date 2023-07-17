@@ -7,14 +7,14 @@
 .content {
     font-family: var(--type-first);
     font-size: 1.25rem;
+    line-height: 1.2;
     color: #333;
     margin: auto;
     margin-top: 8rem;
     text-align: center;
-    line-height: 1.2;
 }
 
-@media (max-width: 55rem) {
+@media (max-width: 60rem) {
     .content {
         font-size: 1.125rem;
     }
