@@ -1,0 +1,41 @@
+.item {
+    display: flex;
+    align-items: flex-start;
+    font-size: 1.5rem;
+    color: #fff;
+}
+  
+.item span {
+    display: inline-flex;
+    font-family: var(--type-first);
+}
+
+.item span:not(:last-child) {
+    margin-bottom: 2rem;
+}
+  
+.icon {
+    display: inline-flex;
+    margin-right: 1rem;
+    color: #666;
+}
+  
+.icon svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+@media (max-width: 55rem) {
+    .item {
+        font-size: 1.25rem;
+    }
+
+    .item span:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
+
+    .icon svg {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+}

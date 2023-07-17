@@ -1,0 +1,44 @@
+.wrapper {
+    max-width: 60rem;
+    margin: -6rem auto;
+    padding: 0 2rem;
+}
+
+.logistics {
+    display: flex;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+.logistics img {
+    object-fit: cover;
+    width: 100%;
+    height: 16.7rem;
+}
+
+.list {
+    padding: 2rem;
+    width: 100%;
+    background-color: #222;
+}
+
+.list address {
+    white-space: pre;
+}
+
+@media (max-width: 55rem) {
+    .wrapper {
+        padding: 0 1rem;
+        margin: -3rem auto;
+    }
+
+    .logistics {
+        flex-direction: column;
+        margin: -3rem 1rem;
+    }
+
+    .list {
+        padding: 2rem 1rem;
+    }
+}

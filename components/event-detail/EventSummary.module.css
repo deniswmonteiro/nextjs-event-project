@@ -1,0 +1,18 @@
+.summary {
+    padding-top: 2rem;
+    height: 30vh;
+    background-image: linear-gradient(to bottom left,  #226, #55c);
+}
+  
+.summary h1 {
+    font-family: var(--type-second);
+    font-size: 2rem;
+    text-align: center;
+    color: #fff;
+}
+
+@media (max-width: 55rem) {
+    .summary {
+        height: 20vh;
+    }
+}

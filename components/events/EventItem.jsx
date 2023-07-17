@@ -31,7 +31,7 @@ const EventItem = ({event}) => {
                 </div>
                 <div className={styles.actions}>
                     <Button link={`/events/${event.id}`} disabled>
-                        <span>Explore Event</span>
+                        <span>Ver Evento</span>
                         <span className={styles.icon}><ArrowRightIcon /></span>
                     </Button>
                 </div>
