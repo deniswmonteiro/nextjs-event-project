@@ -7,12 +7,25 @@
     padding: 0.5rem 1.5rem;
     text-align: center;
     cursor: pointer;
+    border: none;
+    outline: none;
     transition: .3s;
   }
   
 .button:hover,
 .button:active,
-.button.focus {
+.button:focus {
     box-shadow: 0 0 0 2px #fff, 0 0 0 4px #55c;
     transition: .3s;
+}
+
+.button:disabled {
+    opacity: .5;
+    cursor: wait;
+}
+
+.button:disabled:hover,
+.button:disabled:active,
+.button:disabled:focus {
+    box-shadow: none;
 }

@@ -1,0 +1,12 @@
+.title {
+    margin: 3rem auto;
+    text-align: center;
+}
+
+.title h1 {
+    margin-bottom: 1rem;
+}
+
+.title a {
+    display: inline-block;
+}

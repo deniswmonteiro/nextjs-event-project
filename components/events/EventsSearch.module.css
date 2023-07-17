@@ -1,0 +1,78 @@
+.wrapper {
+    padding: 2rem 1rem 0 1rem;
+}
+
+.form {
+    margin: 2rem auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 1rem auto;
+    max-width: 50rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 1rem;
+}
+  
+.controls {
+    width: 80%;
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+}
+  
+.control {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+  
+.control label {
+    font-family: var(--type-first);
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 700;
+}
+  
+.control select {
+    font-family: var(--type-first);
+    font-size: 1rem;
+    line-height: 1.4;
+    border: 1px solid #eee;
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: #eee;
+    transition: .3s;
+}
+
+.control select:focus,
+.control select:hover {
+    outline: none;
+    box-shadow: 0 0 0 2px #55c;
+    transition: .3s;
+}
+
+@media (max-width: 60rem) {
+    .form {
+        flex-direction: column;
+    }
+
+    .controls {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .control select {
+        width: 70%;
+    }
+    
+    .form button {
+        width: 100%;
+    }
+}
