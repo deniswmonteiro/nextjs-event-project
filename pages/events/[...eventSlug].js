@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
 import { getFilteredEvents } from "../dummy-data";
-import EventList from "@/components/events/EventList";
+import Error from "../../components/ui/Error";
+import Button from "../../components/ui/Button";
 import ResultsTitle from "@/components/events/ResultsTitle";
+import EventList from "@/components/events/EventList";
 
 const FilteredEvent = () => {
     const router = useRouter();
@@ -13,12 +15,40 @@ const FilteredEvent = () => {
     const month = Number(filterData[1]);
 
     if (isNaN(year) || isNaN(month) || year < 2021 || year > 2030 || month < 1 || month > 12) {
-        return <p>Pesquisa inválida.</p>
+        return (
+            <>
+                <Error>
+                    <p>
+                        Pesquisa inválida.
+                    </p>
+                </Error>
+                <div className="center">
+                    <Button link="/events" style={{display: "inline-block"}}>
+                        Todos os eventos
+                    </Button>
+                </div>
+            </>
+        )
     }
 
     const filteredEvents = getFilteredEvents({year, month});
 
-    if (!filteredEvents || filteredEvents.length === 0) return <p>Nenhum evento encontrado.</p>
+    if (!filteredEvents || filteredEvents.length === 0) {
+        return (
+            <>
+                <Error>
+                    <p>
+                        Nenhum evento encontrado.
+                    </p>
+                </Error>
+                <div className="center">
+                    <Button link="/events" style={{display: "inline-block"}}>
+                        Todos os eventos
+                    </Button>
+                </div>
+            </>
+        )
+    }
 
     const date = new Date(year, month - 1);
 

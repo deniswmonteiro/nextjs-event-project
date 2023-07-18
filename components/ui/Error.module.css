@@ -1,0 +1,17 @@
+.alert {
+    margin: 3rem auto;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 2rem;
+    max-width: 20rem;
+    background-color: #d5bdfc;
+    border-radius: 4px;
+}
+
+.alert p {
+    font-family: var(--type-first);
+    color: #38028d;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1;
+}
