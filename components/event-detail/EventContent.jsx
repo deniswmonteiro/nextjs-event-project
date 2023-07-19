@@ -1,12 +1,12 @@
 import styles from "./EventContent.module.css";
 
-const EventContent = ({children}) => {
+const EventContent = ({ children }) => {
     return (
-        <section className={styles.wrapper}>
-            <div className={styles.content}>
+        <div className={styles.wrapper}>
+            <p className={styles.content}>
                 {children}
-            </div>
-        </section>
+            </p>
+        </div>
     )
 }
 

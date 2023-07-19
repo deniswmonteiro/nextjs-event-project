@@ -1,11 +1,22 @@
+import Head from "next/head";
 import { getFeaturedEvents } from "../helpers/api-util";
 import EventList from "../components/events/EventList";
 
-const Home = ({events}) => {    
+const Home = ({ events }) => {    
     return (
-        <div>
+        <section>
+            <Head>
+                <title>NextEvents &bull; Próximos Eventos</title>
+                <meta name="description"
+                    content="Encontre o próximo evento que você pode fazer parte." />
+            </Head>
+
+            <h1 className="title titleDark" style={{ marginTop: "3rem" }}>
+                Próximos Eventos
+            </h1>
+
             <EventList featuredEvents={events} />
-        </div>
+        </section>
     )
 }
 

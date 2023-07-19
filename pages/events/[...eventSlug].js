@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React from "react";
 import { useRouter } from "next/router";
 import useSwr from "swr";
@@ -29,10 +30,20 @@ const FilteredEvent = () => {
         }
     }, [data]);
 
+    let pageHead = (
+        <Head>
+            <title>NextEvents &bull; Lista de Eventos Buscados</title>
+            <meta name="description"
+                content={`Lista com todos os eventos no mês buscado.`} />
+        </Head>
+    );
+
     if (!events) {
         return (
-            <div className="center" style={{marginTop: "3rem"}}>
-                <p style={{fontSize: "1.125rem", color: "#55c"}}>
+            <div className="center" style={{ marginTop: "3rem" }}>
+                {pageHead}
+
+                <p style={{ fontSize: "1.125rem", color: "#55c" }}>
                     Carregando...
                 </p>
             </div>
@@ -41,17 +52,32 @@ const FilteredEvent = () => {
 
     const year = Number(filterData[0]);
     const month = Number(filterData[1]);
+    const date = new Date(year, month - 1);
+    const eventDate = new Date(date).toLocaleDateString("pt-BR", {
+        month: "long",
+        year: "numeric"
+    });
+
+    pageHead = (
+        <Head>
+            <title>NextEvents &bull; Eventos em {eventDate}</title>
+            <meta name="description"
+                content={`Todos os eventos no mês de ${eventDate}.`} />
+        </Head>
+    );
 
     if (isNaN(year) || isNaN(month) || year < 2021 || year > 2030 || month < 1 || month > 12 || error) {
         return (
             <>
+                {pageHead}
+
                 <Error>
                     <p>
                         Pesquisa inválida.
                     </p>
                 </Error>
                 <div className="center">
-                    <Button link="/events" style={{display: "inline-block"}}>
+                    <Button link="/events" style={{ display: "inline-block" }}>
                         Todos os eventos
                     </Button>
                 </div>
@@ -68,13 +94,15 @@ const FilteredEvent = () => {
     if (!filteredEvents || filteredEvents.length === 0) {
         return (
             <>
+                {pageHead}
+
                 <Error>
                     <p>
                         Nenhum evento encontrado.
                     </p>
                 </Error>
                 <div className="center">
-                    <Button link="/events" style={{display: "inline-block"}}>
+                    <Button link="/events" style={{ display: "inline-block" }}>
                         Todos os eventos
                     </Button>
                 </div>
@@ -82,11 +110,11 @@ const FilteredEvent = () => {
         )
     }
 
-    const date = new Date(year, month - 1);
-
     return (
         <>
-            <ResultsTitle date={date} />
+            {pageHead}
+
+            <ResultsTitle date={eventDate} />
             <EventList featuredEvents={events} />
         </>
     )

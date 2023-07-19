@@ -50,3 +50,18 @@ a {
     margin: auto;
     text-align: center;
 }
+
+.title {
+    font-family: var(--type-second);
+    font-size: 2rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.title.titleLight {
+    color: #fff;
+}
+
+.title.titleDark {
+    color: #333;
+}

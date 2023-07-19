@@ -3,7 +3,7 @@ import DateIcon from "../icons/date-icon";
 import AddressIcon from "../icons/address-icon";
 import styles from "./EventLogistics.module.css";
 
-const EventLogistics = ({event}) => {
+const EventLogistics = ({ event }) => {
     const eventDate = new Date(event.date).toLocaleDateString("pt-BR", {
         day: "numeric",
         month: "long",
@@ -12,9 +12,10 @@ const EventLogistics = ({event}) => {
     const eventAddress = event.location.replace(", ", "\n");
 
     return (
-        <section className={styles.wrapper}>
+        <div className={styles.wrapper}>
             <div className={styles.logistics}>
-                <img src={`../${event.image}`} alt={event.title} className={styles.image} />
+                <img src={`../${event.image}`} alt={event.title}
+                    className={styles.image} />
 
                 <ul className={styles.list}>
                     <LogisticsItem icon={DateIcon}>
@@ -25,7 +26,7 @@ const EventLogistics = ({event}) => {
                     </LogisticsItem>
                 </ul>
             </div>
-        </section>
+        </div>
     )
 }
 

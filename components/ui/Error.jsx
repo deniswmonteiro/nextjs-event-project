@@ -1,6 +1,6 @@
 import styles from "./Error.module.css";
 
-const Error = ({children}) => {
+const Error = ({ children }) => {
     return (
         <div className={styles.alert}>
             {children}

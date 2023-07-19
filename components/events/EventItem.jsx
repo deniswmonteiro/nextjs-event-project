@@ -4,7 +4,7 @@ import AddressIcon from "../icons/address-icon";
 import ArrowRightIcon from "../icons/arrow-right-icon";
 import styles from "./EventItem.module.css";
 
-const EventItem = ({event}) => {
+const EventItem = ({ event }) => {
     const eventDate = new Date(event.date).toLocaleDateString("pt-BR", {
         day: "numeric",
         month: "long",

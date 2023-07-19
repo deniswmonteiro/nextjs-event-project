@@ -2,7 +2,7 @@ import { useRef } from "react";
 import Button from "../ui/Button";
 import styles from "./EventsSearch.module.css";
 
-const EventsSearch = ({events, onSearch}) => {
+const EventsSearch = ({ events, onSearch }) => {
     const monthRef = useRef();
     const yearRef = useRef();
     const years = [...new Set(events.map((event) => event.date.split("-")[0]))];
@@ -17,7 +17,7 @@ const EventsSearch = ({events, onSearch}) => {
     }
 
     return (
-        <section className={styles.wrapper}>
+        <div className={styles.wrapper}>
             <form className={styles.form} onSubmit={submitFormSearchEvent}>
                 <div className={styles.controls}>
                     <div className={styles.control}>
@@ -51,7 +51,7 @@ const EventsSearch = ({events, onSearch}) => {
 
                 <Button>Pesquisar</Button>
             </form>
-        </section>
+        </div>
     )
 }
 

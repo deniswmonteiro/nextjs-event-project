@@ -13,7 +13,7 @@ const Header = () => {
                 <ul>
                     <li>
                         <Link href="/events">
-                            Eventos
+                            Todos os Eventos
                         </Link>
                     </li>
                 </ul>
