@@ -5,6 +5,7 @@ import Button from "../../components/ui/Button";
 import EventSummary from "../../components/event-detail/EventSummary";
 import EventLogistics from "../../components/event-detail/EventLogistics";
 import EventContent from "../../components/event-detail/EventContent";
+import Comments from "../../components/input/Comments";
 
 const Event = ({ event, hasError }) => {
     if (hasError) {
@@ -45,6 +46,7 @@ const Event = ({ event, hasError }) => {
             <EventContent>
                 {event.description}
             </EventContent>
+            <Comments eventId={event.id} />
         </section>
     )
 }

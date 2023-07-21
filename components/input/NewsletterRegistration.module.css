@@ -1,0 +1,78 @@
+.wrapper {
+    margin: 3rem;
+}
+
+.newsletter {
+    padding: 2rem;
+    max-width: 56rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    background-color: #eee;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    border-radius: 4px;
+    gap: 3rem;
+}
+  
+.newsletter h2 {
+    font-family: var(--type-second);
+    line-height: 1.2;
+    text-align: center;
+    color: #333;
+}
+
+.newsletter .form {
+    width: 100%;
+}
+
+.control label {
+    display: block;
+    font-family: var(--type-first);
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: .3125rem;
+}
+
+.control .inputGroup {
+    display: flex;
+    width: 100%;
+}
+  
+.control input {
+    font-family: var(--type-first);
+    font-size: 1rem;
+    line-height: 1.4;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    width: 100%;
+    padding: .8rem;
+    margin-right: 2rem;
+    transition: .3s;
+}
+
+.control input:hover,
+.control input:focus {
+    box-shadow: 0 0 0 2px #55c;
+    transition: .3s;    
+}
+
+@media (max-width: 60rem) {
+    .wrapper {
+        margin: 3rem 1rem;
+    }
+
+    .newsletter {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        gap: 1rem;
+    }
+
+    .control .inputGroup {
+        flex-direction: column;
+    }
+
+    .control input {
+        margin-bottom: 1.25rem;
+    }
+}

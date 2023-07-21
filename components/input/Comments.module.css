@@ -1,0 +1,31 @@
+.wrapper {
+    margin-top: 15rem;
+    margin-bottom: 5rem;
+}
+
+.commentsSection {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60rem;
+}
+
+.commentsSection h2 {
+    margin-bottom: 1.25rem;
+    font-family: var(--type-second);
+}
+
+.comments {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+}
+
+@media (max-width: 60rem) {
+    .wrapper {
+        margin: 10rem 1rem;
+    }
+
+    .comments {
+        grid-template-columns: 1fr;
+    }
+}

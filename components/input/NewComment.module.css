@@ -1,0 +1,56 @@
+.form {
+    margin: 0 auto;
+    width: 100%;
+}
+  
+.row {
+    display: flex;
+    margin-bottom: 1.25rem;
+}
+  
+.control {
+    margin-bottom: 0.5rem;
+    flex: 1;
+    min-width: 10rem;
+}
+  
+.control label {
+    font-family: var(--type-first);
+    font-size: 1rem;
+    line-height: 1.4;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+  
+.control input,
+.control textarea {
+    font-family: var(--type-first);
+    font-size: 1rem;
+    line-height: 1.4;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    width: 100%;
+    padding: .8rem;
+    margin-right: 2rem;
+    transition: .3s;
+}
+
+.control input:hover,
+.control input:focus,
+.control textarea:hover,
+.control textarea:focus {
+    box-shadow: 0 0 0 2px #55c;
+    transition: .3s;    
+}
+
+.form button {
+    width: initial;
+}
+
+@media (max-width: 60rem) {
+    .form button {
+        width: 100%;
+    }
+}

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { getFeaturedEvents } from "../helpers/api-util";
+import NewsletterRegistration from "../components/input/NewsletterRegistration";
 import EventList from "../components/events/EventList";
 
 const Home = ({ events }) => {    
@@ -14,6 +15,8 @@ const Home = ({ events }) => {
             <h1 className="title titleDark" style={{ marginTop: "3rem" }}>
                 Próximos Eventos
             </h1>
+
+            <NewsletterRegistration />
 
             <EventList featuredEvents={events} />
         </section>

@@ -1,0 +1,21 @@
+.comments {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+  
+.comments li {
+    text-align: left;
+    padding: 1rem 0;
+    border-bottom: 2px solid #ccc;
+}
+  
+.comments p {
+    margin-bottom: 1rem;
+}
+  
+.comments li span {
+    display: block;
+    text-align: right;
+    font-style: italic;
+}
