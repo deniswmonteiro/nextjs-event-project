@@ -4,7 +4,7 @@ const CommentList = ({comments}) => {
     return (
         <ul className={styles.comments}>
             {comments.map((comment) => (
-                <li key={comment.id}>
+                <li key={comment._id}>
                     <p>
                         {comment.commentText}
                     </p>

@@ -1,20 +1,7 @@
-import fs from "fs";
-import path from "path";
+import { MongoClient } from "mongodb";
 
-export function getCommentPath() {
-    const filePath = path.join(process.cwd(), "data", "comments.json");
-
-    return filePath;
-}
-
-export function extractComment(filePath) {
-    const fileData = fs.readFileSync(filePath);
-    const data = JSON.parse(fileData);
-
-    return data;
-}
-
-function handler(req, res) {
+async function handler(req, res) {
+    const connect = await MongoClient.connect("mongodb+srv://deniswmonteiro:Ep10806702@cluster0.cwxr3dv.mongodb.net/events");
     const eventId = req.query.eventId;
 
     if (req.method === "POST") {
@@ -24,22 +11,18 @@ function handler(req, res) {
 
         if (name || email || commentText) {
             const comment = {
-                id: new Date().toISOString(),
                 name,
                 email,
                 commentText,
                 eventId
             }
 
-            const filePath = getCommentPath();
-            const data = extractComment(filePath);
-
-            data.push(comment);
-            fs.writeFileSync(filePath, JSON.stringify(data));
+            const db = connect.db();
+            await db.collection("comments").insertOne(comment);
 
             res.status(201).json({
                 message: "Comentário adicionado com sucesso.",
-                comment
+                comment: comment
             });
         }
 
@@ -51,11 +34,16 @@ function handler(req, res) {
     }
 
     if (req.method === "GET") {
-        const filePath = getCommentPath();
-        const data = extractComment(filePath);
+        const db = connect.db();
+        const comments = await db.collection("comments")
+            .find({ eventId: eventId })
+            .sort({ _id: 1 })
+            .toArray();
 
-        res.status(201).json({ comments: data });
+        res.status(201).json({ comments: comments });
     }
+
+    connect.close();
 }
 
 export default handler
