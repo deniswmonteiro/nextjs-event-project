@@ -7,7 +7,7 @@
     max-width: 56rem;
     margin: 0 auto;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     background-color: #eee;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
     border-radius: 4px;
@@ -19,6 +19,7 @@
     line-height: 1.2;
     text-align: center;
     color: #333;
+    text-align: left;
 }
 
 .newsletter .form {
@@ -55,6 +56,22 @@
 .control input:focus {
     box-shadow: 0 0 0 2px #55c;
     transition: .3s;    
+}
+
+.success {
+    font-family: var(--type-first);
+    font-size: .875rem;
+    line-height: 1.4;
+    color: #193;
+    margin-top: .5rem;
+}
+
+.error {
+    font-family: var(--type-first);
+    font-size: .875rem;
+    line-height: 1.4;
+    color: #f54;
+    margin-top: .5rem;
 }
 
 @media (max-width: 60rem) {

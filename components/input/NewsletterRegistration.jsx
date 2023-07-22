@@ -4,10 +4,15 @@ import styles from "./NewsletterRegistration.module.css";
 
 const NewsletterRegistration = () => {
     const [email, setEmail] = React.useState("");
+    const [error, setError] = React.useState(null);
+    const [success, setSuccess] = React.useState(null);
+    const [loading, setLoading] = React.useState(false);
     const emailRef = React.useRef();
 
     async function handleNewsletterRegistration(event) {
         event.preventDefault();
+
+        setLoading(true);
 
         const response = await fetch("/api/newsletter", {
             method: "POST",
@@ -17,13 +22,32 @@ const NewsletterRegistration = () => {
             body: JSON.stringify({ email })
         });
 
-        if (response.ok) emailRef.current.value = "";
+        const result = await response.json();
+
+        if (response.status === 500) {
+            setError(result.message);
+            setTimeout(() => setError(null), 5000);
+            setLoading(false);
+        }
+
+        else if (response.status === 422) {
+            setError(result.message);
+            setTimeout(() => setError(null), 5000);
+            setLoading(false);
+        }
+
+        else {
+            setSuccess(result.message);
+            setTimeout(() => setSuccess(null), 5000);
+            setLoading(false);
+            emailRef.current.value = "";
+        }
     }
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.newsletter}>
-                <h2>Registre-se para receber notícias</h2>
+                <h2>Registre-se para receber atualizações sobre os eventos</h2>
 
                 <form onSubmit={handleNewsletterRegistration}
                     className={styles.form}>
@@ -33,9 +57,19 @@ const NewsletterRegistration = () => {
                             <input type="email" id="email"
                                 onChange={({target}) => setEmail(target.value)}
                                 ref={emailRef} />
-                            <Button>Registrar</Button>
+                            
+                            {loading ? 
+                                (
+                                    <Button disabled>Registrando...</Button>
+                                ) : (
+                                    <Button>Registrar</Button>
+                                )
+                            }
                         </div>
                     </div>
+                    
+                    {success && <p className={styles.success}>{success}</p>}
+                    {error && <p className={styles.error}>{error}</p>}
                 </form>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./Button.module.css";
 
-const Button = ({ children, link, onClick }) => {
+const Button = ({ children, link, onClick, ...props }) => {
     if (link) {
         return (
             <Link href={link} className={styles.button}>
@@ -13,7 +13,8 @@ const Button = ({ children, link, onClick }) => {
     else {
         return (
             <button className={styles.button}
-                onClick={onClick}>
+                onClick={onClick}
+                {...props}>
                 {children}
             </button>
         )

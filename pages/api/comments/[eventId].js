@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 
 async function handler(req, res) {
-    const connect = await MongoClient.connect("mongodb+srv://deniswmonteiro:Ep10806702@cluster0.cwxr3dv.mongodb.net/events");
+    const connect = await MongoClient.connect("mongodb+srv://deniswmonteiro:woftam-corMat-1pipna@cluster0.cwxr3dv.mongodb.net/events");
     const eventId = req.query.eventId;
 
     if (req.method === "POST") {
