@@ -45,6 +45,11 @@
     transition: .3s;    
 }
 
+.error {
+    margin-bottom: 2rem;
+    color: red;
+}
+
 .form button {
     width: initial;
 }

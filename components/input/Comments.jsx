@@ -1,10 +1,32 @@
+import React from "react";
 import NewComment from "./NewComment";
 import CommentList from "./CommentList";
 import styles from "./Comments.module.css";
 
-const Comments = ({eventId}) => {
+const Comments = ({ eventId }) => {
+    const [comments, setComments] = React.useState([]);
+
+    React.useEffect(() => {
+        getComments();
+    }, []);
+
+    async function getComments() {
+        const response = await fetch(`/api/comments/${eventId}`);
+        const result = await response.json();
+
+        if (response.ok) setComments(result.comments);
+    }
+
     async function handleAddComment(commentData) {
-        // send data to API
+        const response = await fetch(`/api/comments/${eventId}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(commentData)
+        });
+
+        if (response.ok) getComments();
     }
 
     return (
@@ -14,7 +36,7 @@ const Comments = ({eventId}) => {
 
                 <div className={styles.comments}>
                     <NewComment onAddComment={handleAddComment} />
-                    <CommentList />
+                    {comments && <CommentList comments={comments} />}
                 </div>
             </div>
         </div>

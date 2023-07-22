@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./NewComment.module.css";
 import Button from "../ui/Button";
+import styles from "./NewComment.module.css";
 
 const NewComment = ({ onAddComment }) => {
     const [invalid, setInvalid] = React.useState(false);
@@ -11,24 +11,37 @@ const NewComment = ({ onAddComment }) => {
     async function handleCommentFormSubmit(event) {
         event.preventDefault();
 
-        const email = emailRef.current.value;
-        const name = nameRef.current.value;
-        const comment = commentRef.current.value;
+        let email = emailRef.current.value;
+        let name = nameRef.current.value;
+        let comment = commentRef.current.value;
 
-        if (!enteredEmail || enteredEmail.trim() === "" || !enteredEmail.includes("@") ||
-            !enteredName || enteredName.trim() === "" ||
-            !enteredComment || enteredComment.trim() === "") {
+        if (!email || email.trim() === "" || !email.includes("@") ||
+            !name || name.trim() === "" ||
+            !comment || comment.trim() === "") {
                 setInvalid(true);
                 return false;
         }
 
         else {
             onAddComment({ email, name, comment });
+
+            emailRef.current.value = "";
+            nameRef.current.value = "";
+            commentRef.current.value = "";
         }
     }
 
     return (
         <form className={styles.form} onSubmit={handleCommentFormSubmit}>
+            <div className={styles.row}>
+                <div className={styles.control}>
+                <label htmlFor="name">
+                        Nome
+                    </label>
+                    <input type="text" id="nome"
+                        ref={nameRef} />
+                </div>
+            </div>
             <div className={styles.row}>
                 <div className={styles.control}>
                     <label htmlFor="email">
@@ -40,22 +53,13 @@ const NewComment = ({ onAddComment }) => {
             </div>
             <div className={styles.row}>
                 <div className={styles.control}>
-                    <label htmlFor="name">
-                        Nome
-                    </label>
-                    <input type="text" id="nome"
-                        ref={nameRef} />
-                </div>
-            </div>
-            <div className={styles.row}>
-                <div className={styles.control}>
                     <label htmlFor="comment">Comentário</label>
                     <textarea id="comment" rows="5"
                         ref={commentRef}></textarea>
                 </div>
             </div>
             
-            {invalid && <p>Preencha um Email e um Comentário válido.</p>}
+            {invalid && <p className={styles.error}>Preencha os campos corretamente.</p>}
 
             <Button>Enviar</Button>
         </form>

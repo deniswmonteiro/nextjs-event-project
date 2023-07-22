@@ -1,13 +1,23 @@
+import React from "react";
 import Button from "../ui/Button";
 import styles from "./NewsletterRegistration.module.css";
 
 const NewsletterRegistration = () => {
+    const [email, setEmail] = React.useState("");
+    const emailRef = React.useRef();
+
     async function handleNewsletterRegistration(event) {
         event.preventDefault();
 
-        // fetch user input (state or refs)
-        // optional: validate input
-        // send valid data to API
+        const response = await fetch("/api/newsletter", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email })
+        });
+
+        if (response.ok) emailRef.current.value = "";
     }
 
     return (
@@ -20,7 +30,9 @@ const NewsletterRegistration = () => {
                     <div className={styles.control}>
                         <label htmlFor="email">Email</label>
                         <div className={styles.inputGroup}>
-                            <input type="email" id="email" />
+                            <input type="email" id="email"
+                                onChange={({target}) => setEmail(target.value)}
+                                ref={emailRef} />
                             <Button>Registrar</Button>
                         </div>
                     </div>

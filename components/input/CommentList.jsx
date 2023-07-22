@@ -1,13 +1,18 @@
 import styles from "./CommentList.module.css";
 
-const CommentList = () => {
+const CommentList = ({comments}) => {
     return (
         <ul className={styles.comments}>
-            {/* Render list of comments - fetched from API */}
-            <li>
-                <p>Comment</p>
-                <span>Author</span>
-            </li>
+            {comments.map((comment) => (
+                <li key={comment.id}>
+                    <p>
+                        {comment.commentText}
+                    </p>
+                    <span>
+                        {comment.name}
+                    </span>
+                </li>
+            ))}
         </ul>
     )
 }
