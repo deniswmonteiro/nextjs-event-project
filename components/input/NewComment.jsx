@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../ui/Button";
 import styles from "./NewComment.module.css";
 
-const NewComment = ({ onAddComment }) => {
+const NewComment = ({ onAddComment, errorMessage, successMessage, commentAdded, loading }) => {
     const [invalid, setInvalid] = React.useState(false);
     const emailRef = React.useRef();
     const nameRef = React.useRef();
@@ -19,15 +19,19 @@ const NewComment = ({ onAddComment }) => {
             !name || name.trim() === "" ||
             !comment || comment.trim() === "") {
                 setInvalid(true);
-                return false;
+                setLoading(false);
         }
 
         else {
+            
+            if (commentAdded) {
+                emailRef.current.value = "";
+                nameRef.current.value = "";
+                commentRef.current.value = "";
+            }
+            
+            setInvalid(false);
             onAddComment({ email, name, comment });
-
-            emailRef.current.value = "";
-            nameRef.current.value = "";
-            commentRef.current.value = "";
         }
     }
 
@@ -58,10 +62,18 @@ const NewComment = ({ onAddComment }) => {
                         ref={commentRef}></textarea>
                 </div>
             </div>
-            
+
+            {successMessage && <p className={styles.success}>{successMessage}</p>}
+            {errorMessage && <p className={styles.error}>{errorMessage}</p>}
             {invalid && <p className={styles.error}>Preencha os campos corretamente.</p>}
 
-            <Button>Enviar</Button>
+            {loading ?
+                (
+                    <Button disabled>Adicionando...</Button>
+                ) : (
+                    <Button>Adicionar</Button>
+                )
+            }
         </form>
     )
 }

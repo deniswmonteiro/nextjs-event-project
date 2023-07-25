@@ -1,29 +1,47 @@
-import { MongoClient } from "mongodb";
+import { dbConnect, getAllDocuments, insertDocument } from "../../../helpers/db-util";
 
 async function handler(req, res) {
-    const connect = await MongoClient.connect("mongodb+srv://deniswmonteiro:woftam-corMat-1pipna@cluster0.cwxr3dv.mongodb.net/events");
+    let connect;
     const eventId = req.query.eventId;
 
     if (req.method === "POST") {
         const name = req.body.name;
         const email = req.body.email;
         const commentText = req.body.comment;
+        const date = new Date().toLocaleDateString("pt-BR", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
 
         if (name || email || commentText) {
-            const comment = {
+            const reqBody = {
                 name,
                 email,
                 commentText,
+                date,
                 eventId
             }
 
-            const db = connect.db();
-            await db.collection("comments").insertOne(comment);
+            try {
+                connect = await dbConnect();
+                await insertDocument(connect, "comments", reqBody);
 
-            res.status(201).json({
-                message: "Comentário adicionado com sucesso.",
-                comment: comment
-            });
+                res.status(201).json({
+                    message: "Comentário adicionado com sucesso.",
+                    comment: reqBody
+                });
+            }
+        
+            catch (error) {
+                res.status(500).json({
+                    message: "Erro de conexão com o banco de dados. Tente novamente mais tarde."
+                });
+            }
+
+            finally {
+                connect.close();
+            }
         }
 
         else {
@@ -34,16 +52,24 @@ async function handler(req, res) {
     }
 
     if (req.method === "GET") {
-        const db = connect.db();
-        const comments = await db.collection("comments")
-            .find({ eventId: eventId })
-            .sort({ _id: 1 })
-            .toArray();
+        try {
+            connect = await dbConnect();
+            
+            const comments = await getAllDocuments(connect, "comments", {_id: -1}, {eventId: eventId});
 
-        res.status(201).json({ comments: comments });
+            res.status(201).json({ comments: comments });
+        }
+    
+        catch (error) {
+            res.status(500).json({
+                message: "Erro de conexão com o banco de dados. Tente novamente mais tarde."
+            });
+        }
+
+        finally {
+            connect.close();
+        }
     }
-
-    connect.close();
 }
 
 export default handler

@@ -12,6 +12,15 @@
 .commentsSection h2 {
     margin-bottom: 1.25rem;
     font-family: var(--type-second);
+    line-height: 1.4;
+}
+
+.loading {
+    font-family: var(--type-first);
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #55c;
+    padding: 1rem 2rem;
 }
 
 .comments {
@@ -20,12 +29,27 @@
     gap: 5rem;
 }
 
+.noComments {
+    font-family: var(--type-first);
+    font-size: 1rem;
+    line-height: 1.4;
+    padding: 1rem 2rem;
+}
+
 @media (max-width: 60rem) {
     .wrapper {
         margin: 10rem 1rem;
     }
 
+    .loading {
+        padding: 1rem;
+    }
+
     .comments {
         grid-template-columns: 1fr;
+    }
+
+    .noComments {
+        padding: 1rem;
     }
 }

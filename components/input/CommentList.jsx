@@ -8,8 +8,11 @@ const CommentList = ({comments}) => {
                     <p>
                         {comment.commentText}
                     </p>
-                    <span>
+                    <span className={styles.author}>
                         {comment.name}
+                    </span>
+                    <span className={styles.date}>
+                        {comment.date}
                     </span>
                 </li>
             ))}

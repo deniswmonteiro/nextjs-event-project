@@ -1,17 +1,4 @@
-import { MongoClient } from "mongodb";
-
-async function dbConnect() {
-    const connect = await MongoClient.connect("mongodb+srv://deniswmonteiro:woftam-corMat-1pipna@cluster0.cwxr3dv.mongodb.net/events");
-
-    return connect;
-}
-
-async function insertDocument(connect, body) {
-    const db = connect.db();
-
-    await db.collection("newsletter").insertOne(body);
-}
-
+import { dbConnect, insertDocument } from "../../helpers/db-util";
 
 async function handler(req, res) {
     if (req.method === "POST") {
@@ -25,7 +12,11 @@ async function handler(req, res) {
 
             try {
                 connect = await dbConnect();
-                await insertDocument(connect, reqBody);
+                await insertDocument(connect, "newsletter", reqBody);
+
+                res.status(201).json({
+                    message: "Email registrado com sucesso.",
+                });
             }
 
             catch (error) {
@@ -37,11 +28,6 @@ async function handler(req, res) {
             finally {
                 connect.close();
             }
-
-
-            res.status(201).json({
-                message: "Email registrado com sucesso.",
-            });
         }
 
         else {

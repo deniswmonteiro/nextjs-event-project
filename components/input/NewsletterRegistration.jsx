@@ -4,9 +4,9 @@ import styles from "./NewsletterRegistration.module.css";
 
 const NewsletterRegistration = () => {
     const [email, setEmail] = React.useState("");
+    const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
     const [success, setSuccess] = React.useState(null);
-    const [loading, setLoading] = React.useState(false);
     const emailRef = React.useRef();
 
     async function handleNewsletterRegistration(event) {
@@ -25,21 +25,21 @@ const NewsletterRegistration = () => {
         const result = await response.json();
 
         if (response.status === 500) {
+            setLoading(false);
             setError(result.message);
             setTimeout(() => setError(null), 5000);
-            setLoading(false);
         }
 
         else if (response.status === 422) {
+            setLoading(false);
             setError(result.message);
             setTimeout(() => setError(null), 5000);
-            setLoading(false);
         }
 
         else {
+            setLoading(false);
             setSuccess(result.message);
             setTimeout(() => setSuccess(null), 5000);
-            setLoading(false);
             emailRef.current.value = "";
         }
     }
