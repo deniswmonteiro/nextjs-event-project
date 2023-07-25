@@ -4,13 +4,13 @@
     justify-content: center;
     padding: 1rem 2rem;
     max-width: 20rem;
-    background-color: #d5bdfc;
+    background-color: #dbf;
     border-radius: 4px;
 }
 
 .alert p {
     font-family: var(--type-first);
-    color: #38028d;
+    color: #308;
     font-weight: 700;
     font-size: 1rem;
     line-height: 1;

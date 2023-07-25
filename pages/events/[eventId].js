@@ -16,7 +16,7 @@ const Event = ({ event, hasError }) => {
                 </Error>
                 <div className="center">
                     <Button link="/" style={{ display: "inline-block" }}>
-                        Página inicial
+                        Voltar
                     </Button>
                 </div>
             </>
